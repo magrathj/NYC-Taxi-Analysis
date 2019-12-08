@@ -1,0 +1,51 @@
+- name: users
+  size: medium
+  columns: ['user_id', 'birth_year', 'country', 'city', 'created_date', 'user_settings_crypto_unlocked', 'plan', 'attributes_notifications_marketing_push', 'attributes_notifications_marketing_email', 'num_contacts', 'num_referrals', 'num_successful_referrals']
+  schema: |
+    user_id varchar(10) primary key,
+    birth_year integer not null,
+    country varchar(2) not null,
+    city varchar(60),
+    created_date timestamp without time zone not null,
+    user_settings_crypto_unlocked integer not null,
+    plan varchar(15) not null,
+    attributes_notifications_marketing_push double precision,
+    attributes_notifications_marketing_email double precision,
+    num_contacts integer,
+    num_referrals integer,
+    num_successful_referrals integer
+
+- name: devices
+  size: small
+  columns: ['brand', 'user_id']
+  schema: |
+    brand varchar(7) not null,
+    user_id varchar(10) primary key
+
+- name: notifications
+  size: medium
+  columns: ['reason', 'channel', 'status', 'user_id', 'created_date']
+  schema: |
+    reason varchar(40) not null,
+    channel varchar(5) not null,
+    status varchar(20) not null,
+    user_id varchar(10) not null,
+    created_date timestamp without time zone not null,
+    PRIMARY KEY(user_id, reason, channel, created_date)
+
+- name: transactions
+  size: large
+  columns: ['transaction_id', 'transactions_type', 'transactions_currency', 'amount_usd', 'transactions_state', 'ea_cardholderpresence', 'ea_merchant_mcc', 'ea_merchant_city', 'ea_merchant_country', 'direction', 'user_id', 'created_date']
+  schema: |
+    transaction_id varchar(20) primary key,
+    transactions_type varchar(20) not null,
+    transactions_currency character(3) not null,
+    amount_usd double precision not null,
+    transactions_state varchar(25) not null,
+    ea_cardholderpresence varchar(7),
+    ea_merchant_mcc double precision,
+    ea_merchant_city varchar(20),
+    ea_merchant_country varchar(3),
+    direction varchar(8) not null,
+    user_id varchar(10) not null,
+    created_date timestamp without time zone not null
