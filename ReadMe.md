@@ -5,6 +5,9 @@
 * http://strimas.com/spatial/hexagonal-grids/
 * https://github.com/toddwschneider/nyc-taxi-data
 * https://chih-ling-hsu.github.io/2018/05/14/NYC#location-data
+* https://docs.microsoft.com/en-us/azure/postgresql/quickstart-create-server-database-portal
+* https://docs.microsoft.com/en-us/azure/postgresql/connect-python
+
 
 
 This repo provides scripts to download, process, and analyze data for billions of taxi and for-hire vehicle (Uber, Lyft, etc.) trips originating in New York City since 2009. Most of the raw data comes from the NYC Taxi & Limousine Commission.
