@@ -17,6 +17,7 @@ def download_all_urls():
             urllib.request.urlretrieve(line, downloads_path.joinpath(f"{file_name}.csv"))
     print("\n Completed Downloading CSVs \n")
        
+       
 def download_shape_file(): 
     print("\n Starting Download of Shape File \n")
     urllib.request.urlretrieve("https://s3.amazonaws.com/nyc-tlc/misc/taxi_zones.zip", downloads_path.joinpath(f"taxi_zones.zip")) 
@@ -25,9 +26,18 @@ def download_shape_file():
     print("\n Completed Download of Shape File \n")
 
 
+def download_NYC_Census_Track_Shape_file():
+    print("\n Starting Download of Shape File \n")
+    urllib.request.urlretrieve("https://data.cityofnewyork.us/api/geospatial/fxpq-c8ku?method=export&format=Shapefile", downloads_path.joinpath(f"nyc_2010.zip")) 
+    with zipfile.ZipFile("nyc_2010.zip","r") as zip_ref:
+        zip_ref.extractall("./nyc_2010_shape")
+    print("\n Completed Download of Shape File \n")
+    
+
 def main():
     download_all_urls()
     download_shape_file()
+    download_NYC_Census_Track_Shape_file()
 
 
 if __name__ == '__main__':
