@@ -24,12 +24,12 @@ def create_tables(config: list, connection: pg.extensions.connection):
     connection.commit()
     print("""Commited all creations.""")
 
-def load_tables(config: list, connection: pg.extensions.connection, prefix: str=None):
+def load_tables(config: list, connection: pg.extensions.connection):
     # Iterate and load
     cur = connection.cursor()
     for table in config:
         table_name = table.get('name')
-        table_name_csv = table_name if not prefix else prefix + table_name
+        table_name_csv = table_name 
         table_source = data_path.joinpath(f"{table_name_csv}.csv")
         print("""Started to load {} data to db from {}.""".format(table_name, table_source))
         with open(table_source, 'r', encoding='utf-8') as f:
@@ -50,10 +50,9 @@ def etl():
     )
     print("""Successfully created db connection.""")
     # Table creation and data insertion
-    csv_prefix = 'rev-'
     config = load_config()
     create_tables(config=config, connection=connection)
-    load_tables(config=config, connection=connection, prefix=csv_prefix)
+    load_tables(config=config, connection=connection)
     print("""ETL completed.""")
 
 if __name__ == '__main__':

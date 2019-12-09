@@ -1,4 +1,4 @@
-# Big Data - NYC Uber Time Series Analysis
+# Big Data - NYC Taxi Data Analysis & Time Series Forecasting
 
 ### useful links
 * https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/

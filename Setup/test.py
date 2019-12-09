@@ -1,8 +1,9 @@
 import psycopg2
 import os
 import sys
+from config import *
 
-def main():
+def connect():
     # Update connection string information 
     host = sys.argv[1]
     dbname = "postgres"
@@ -35,6 +36,16 @@ def main():
     conn.commit()
     cursor.close()
     conn.close()
+
+def search_for_downloaded_files():
+    prefix = ['fhv', 'green', 'yellow']
+    for pre in prefix:
+        files = [filename for filename in os.listdir(downloads_path) if filename.startswith(pre)]
+        print(files)
+
+
+def main():
+    search_for_downloaded_files()
 
 
 if __name__ == '__main__':

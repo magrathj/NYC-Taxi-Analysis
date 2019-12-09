@@ -4,8 +4,24 @@ from config import *
 import pandas as pd
 import numpy as np
 import urllib.request
+from urllib.request import Request, urlopen
+from urllib.error import URLError
 import zipfile
 
+
+
+def download_file(url, path):
+    try:
+        response = urllib.request.urlretrieve(url, path)
+    except URLError as e:
+        print("url: ", url, " has exception ")
+        if hasattr(e, 'reason'):
+            print('We failed to reach a server.')
+            print('Reason: ', e.reason)
+        elif hasattr(e, 'code'):
+            print('The server couldn\'t fulfill the request.')
+            print('Error code: ', e.code)
+ 
 
 def download_all_urls():
     print("\n Starting Download of CSVs \n")
@@ -14,31 +30,39 @@ def download_all_urls():
             print("Line {}: {}".format(cnt, line))
             file_name = line.split('/')[-1].split('.')[0]
             file_type = file_name.split('_')[0]
-            urllib.request.urlretrieve(line, downloads_path.joinpath(f"{file_name}.csv"))
+            download_file(line, downloads_path.joinpath(f"{file_name}.csv"))
     print("\n Completed Downloading CSVs \n")
        
-       
-def download_shape_file(): 
+
+def download_taxi_zones_shape_file(): 
     print("\n Starting Download of Shape File \n")
-    urllib.request.urlretrieve("https://s3.amazonaws.com/nyc-tlc/misc/taxi_zones.zip", downloads_path.joinpath(f"taxi_zones.zip")) 
+    download_file("https://s3.amazonaws.com/nyc-tlc/misc/taxi_zones.zip", downloads_path.joinpath(f"taxi_zones.zip")) 
     with zipfile.ZipFile("taxi_zones.zip","r") as zip_ref:
-        zip_ref.extractall("./shape")
+        zip_ref.extractall("./taxi_zones_shape")
     print("\n Completed Download of Shape File \n")
 
 
 def download_NYC_Census_Track_Shape_file():
     print("\n Starting Download of Shape File \n")
-    urllib.request.urlretrieve("https://data.cityofnewyork.us/api/geospatial/fxpq-c8ku?method=export&format=Shapefile", downloads_path.joinpath(f"nyc_2010.zip")) 
+    download_file("https://data.cityofnewyork.us/api/geospatial/fxpq-c8ku?method=export&format=Shapefile", downloads_path.joinpath(f"nyc_2010.zip")) 
     with zipfile.ZipFile("nyc_2010.zip","r") as zip_ref:
         zip_ref.extractall("./nyc_2010_shape")
     print("\n Completed Download of Shape File \n")
     
 
-def main():
-    download_all_urls()
-    download_shape_file()
-    download_NYC_Census_Track_Shape_file()
+def fhv_base_download():
+    print("\n Starting Download of Base Files \n")
+    base_files = ['https://data.cityofnewyork.us/api/views/2v9c-2k7f/rows.csv?accessType=DOWNLOAD','https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv']
+    download_file(base_files[0], downloads_path.joinpath(f"base_fhv.csv")) 
+    download_file(base_files[1], downloads_path.joinpath(f"base_lookup.csv")) 
+    print("\n Completed Download of Base Files \n")
 
+
+def main():
+    #download_all_urls()
+    download_taxi_zones_shape_file()
+    download_NYC_Census_Track_Shape_file()
+    fhv_base_download()
 
 if __name__ == '__main__':
     main()
