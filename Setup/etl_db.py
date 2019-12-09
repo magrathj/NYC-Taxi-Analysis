@@ -24,9 +24,7 @@ def create_tables(config: list, connection: pg.extensions.connection):
     connection.commit()
     print("""Commited all creations.""")
 
-def load_tables(
-    config: list, connection: pg.extensions.connection, prefix: str=None
-):
+def load_tables(config: list, connection: pg.extensions.connection, prefix: str=None):
     # Iterate and load
     cur = connection.cursor()
     for table in config:
