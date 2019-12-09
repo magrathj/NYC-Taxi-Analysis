@@ -33,14 +33,18 @@ def load_tables(config: list, connection: pg.extensions.connection):
     for table in config:
         table_name = table.get('name')
         table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
-        for file in table_files:
-            table_source = downloads_path.joinpath(f"{file}.csv")
-            print("""Started to load {} data to db from {}.""".format(table_name, table_source))
-            with open(table_source, 'r', encoding='utf-8') as f:
-                next(f)
-                cur.copy_expert(f"COPY {table_name} FROM STDIN CSV NULL AS ''", f)
-            connection.commit()
-            print("""Completed loading file {} into {} table.""".format(file, table_name))
+        if not table_files:
+            print("""No files to upload to {} table.""".format(table_name))
+        else:
+            for file in table_files:
+                file_name = file.split('.')[0]
+                table_source = downloads_path.joinpath(f"{file_name}.csv")
+                print("""Started to load {} data to db from {}.""".format(table_name, table_source))
+                with open(table_source, 'r', encoding='utf-8') as f:
+                    next(f)
+                    cur.copy_expert(f"COPY {table_name} FROM STDIN CSV NULL AS ''", f)
+                connection.commit()
+                print("""Completed loading file {} into {} table.""".format(file, table_name))
 
 def etl(host, port, dbname, user, password, sslmode):
     # DB connection
