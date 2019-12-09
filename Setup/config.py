@@ -31,10 +31,3 @@ data_path =  Path(
     )
 
 
-#Set db variables
-os.environ['HOST'] = ""
-port=5432
-os.environ['DB'] = ""
-os.environ['USER'] = ""
-os.environ['PASSWORD'] = ""
-

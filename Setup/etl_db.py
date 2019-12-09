@@ -5,6 +5,9 @@ import os
 import pandas as pd
 import configparser
 from config import *
+import sys
+import argparse
+
 
 
 def load_config() -> list:
@@ -29,16 +32,17 @@ def load_tables(config: list, connection: pg.extensions.connection):
     cur = connection.cursor()
     for table in config:
         table_name = table.get('name')
-        table_name_csv = table_name 
-        table_source = data_path.joinpath(f"{table_name_csv}.csv")
-        print("""Started to load {} data to db from {}.""".format(table_name, table_source))
-        with open(table_source, 'r', encoding='utf-8') as f:
-            next(f)
-            cur.copy_expert(f"COPY {table_name} FROM STDIN CSV NULL AS ''", f)
-        connection.commit()
-        print("""Completed loading {} table.""".format(table_name))
+        table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
+        for file in table_files:
+            table_source = downloads_path.joinpath(f"{file}.csv")
+            print("""Started to load {} data to db from {}.""".format(table_name, table_source))
+            with open(table_source, 'r', encoding='utf-8') as f:
+                next(f)
+                cur.copy_expert(f"COPY {table_name} FROM STDIN CSV NULL AS ''", f)
+            connection.commit()
+            print("""Completed loading file {} into {} table.""".format(file, table_name))
 
-def etl():
+def etl(host, port, dbname, user, password, sslmode):
     # DB connection
     print("""ETL started.""")
     print("""Establishing connection to database {} listening on {}, port {} with user name: {}.""".format(dbname, host, port, user))
@@ -46,7 +50,9 @@ def etl():
         host=host,
         port=port,
         dbname=dbname,
-        user=user
+        user=user,
+        password=password,
+        sslmode=sslmode
     )
     print("""Successfully created db connection.""")
     # Table creation and data insertion
@@ -55,5 +61,26 @@ def etl():
     load_tables(config=config, connection=connection)
     print("""ETL completed.""")
 
+
+def main():
+    # Create Argument Parser
+    ap = argparse.ArgumentParser(description = "This script creates and loads the NYC Taxi dataset into a defined postgres db. For example, python etl_db.py --host=<server-name> --port=5432 --dbname=<database-name> --user=<admin-username> --password=<admin-password>")
+    # Add the arguments to the parser
+    ap.add_argument("-h", "--host", required=True, help="Enter <server-name>")
+    ap.add_argument("-p", "--port", required=True, help="Enter <port-number>, default 5432")
+    ap.add_argument("-d", "--dbname", required=True, help="Enter <database-name>, default postgres")
+    ap.add_argument("-u", "--user", required=True, help="Enter <admin-username>")
+    ap.add_argument("-a", "--password", required=True, help="Enter <admin-password>")
+    args = vars(ap.parse_args())
+    # Set db variables
+    host = args['host']
+    port = args['port']
+    dbname = args['dbname']
+    user = args['user']
+    password = args['password']
+    sslmode = "require"
+    etl(host=host, port=port, dbname=dbname, user=user, password=password, sslmode=sslmode)
+
+
 if __name__ == '__main__':
-    etl()
+    main()

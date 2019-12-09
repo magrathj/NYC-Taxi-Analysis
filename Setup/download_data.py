@@ -9,11 +9,11 @@ from urllib.error import URLError
 import zipfile
 
 
-
 def download_file(url, path):
     try:
         response = urllib.request.urlretrieve(url, path)
     except URLError as e:
+        print("********* ERROR *************")
         print("url: ", url, " has exception ")
         if hasattr(e, 'reason'):
             print('We failed to reach a server.')
@@ -37,32 +37,40 @@ def download_all_urls():
 def download_taxi_zones_shape_file(): 
     print("\n Starting Download of Shape File \n")
     download_file("https://s3.amazonaws.com/nyc-tlc/misc/taxi_zones.zip", downloads_path.joinpath(f"taxi_zones.zip")) 
-    with zipfile.ZipFile("taxi_zones.zip","r") as zip_ref:
-        zip_ref.extractall("./taxi_zones_shape")
+    directory = downloads_path.joinpath(f"taxi_zones_shape")
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    with zipfile.ZipFile(downloads_path.joinpath(f"taxi_zones.zip"),"r") as zip_ref:
+        zip_ref.extractall(directory)
     print("\n Completed Download of Shape File \n")
 
 
 def download_NYC_Census_Track_Shape_file():
     print("\n Starting Download of Shape File \n")
     download_file("https://data.cityofnewyork.us/api/geospatial/fxpq-c8ku?method=export&format=Shapefile", downloads_path.joinpath(f"nyc_2010.zip")) 
-    with zipfile.ZipFile("nyc_2010.zip","r") as zip_ref:
-        zip_ref.extractall("./nyc_2010_shape")
+    directory = downloads_path.joinpath(f"nyc_2010_shape")
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    with zipfile.ZipFile(downloads_path.joinpath(f"nyc_2010.zip"),"r") as zip_ref:
+        zip_ref.extractall(directory)
     print("\n Completed Download of Shape File \n")
     
 
-def fhv_base_download():
+def extras_download():
     print("\n Starting Download of Base Files \n")
     base_files = ['https://data.cityofnewyork.us/api/views/2v9c-2k7f/rows.csv?accessType=DOWNLOAD','https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv']
     download_file(base_files[0], downloads_path.joinpath(f"base_fhv.csv")) 
-    download_file(base_files[1], downloads_path.joinpath(f"base_lookup.csv")) 
+    download_file(base_files[1], downloads_path.joinpath(f"lookup.csv")) 
     print("\n Completed Download of Base Files \n")
 
 
 def main():
-    #download_all_urls()
+    print("***** Starting Download Script ******")
+    download_all_urls()
     download_taxi_zones_shape_file()
     download_NYC_Census_Track_Shape_file()
-    fhv_base_download()
+    extras_download()
+    print("***** Ending Download Script ******")
 
 if __name__ == '__main__':
     main()
