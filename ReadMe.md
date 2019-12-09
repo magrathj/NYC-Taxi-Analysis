@@ -1,5 +1,11 @@
-# New York City Taxi and For-Hire Vehicle Data
-Code originally in support of this post: "Analyzing 1.1 Billion NYC Taxi and Uber Trips, with a Vengeance"
+# Big Data - NYC Uber Time Series Analysis
+
+### useful links
+* https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/
+* http://strimas.com/spatial/hexagonal-grids/
+* https://github.com/toddwschneider/nyc-taxi-data
+* https://chih-ling-hsu.github.io/2018/05/14/NYC#location-data
+
 
 This repo provides scripts to download, process, and analyze data for billions of taxi and for-hire vehicle (Uber, Lyft, etc.) trips originating in New York City since 2009. Most of the raw data comes from the NYC Taxi & Limousine Commission.
 
