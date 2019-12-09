@@ -108,7 +108,7 @@
     id serial primary key,
     type text
 
-- name: fhv_bases 
+- name: base_fhv 
   size: small
   columns: ['base_number', 'base_name', 'dba', 'dba_category']
   schema: |
