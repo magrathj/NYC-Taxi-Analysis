@@ -9,6 +9,14 @@ from urllib.error import URLError
 import zipfile
 
 
+def check_downloaded_files():
+    url_list = [line.rstrip('\n') for line in open(urls_path)]
+    downloads = [filename for filename in os.listdir(downloads_path)]
+    matches = [b for a, b in zip(downloads, url_list) if a == b.split('/')[-1]]
+    url_updated_list = [item for item in url_list if item not in matches]
+    return url_updated_list
+
+
 def download_file(url, path):
     try:
         response = urllib.request.urlretrieve(url, path)
@@ -25,12 +33,13 @@ def download_file(url, path):
 
 def download_all_urls():
     print("\n Starting Download of CSVs \n")
-    with open(urls_path) as fp:
-        for cnt, line in enumerate(fp):
-            print("Line {}: {}".format(cnt, line))
-            file_name = line.split('/')[-1].split('.')[0]
-            file_type = file_name.split('_')[0]
-            download_file(line, downloads_path.joinpath(f"{file_name}.csv"))
+    # check url list against those already downloaded
+    url_list = check_downloaded_files()
+    for cnt, line in enumerate(url_list):
+        print("Line {}: {}".format(cnt, line))
+        file_name = line.split('/')[-1].split('.')[0]
+        file_type = file_name.split('_')[0]
+        download_file(line, downloads_path.joinpath(f"{file_name}.csv"))
     print("\n Completed Downloading CSVs \n")
        
 
