@@ -17,3 +17,56 @@
     PULocationID integer default null,
     DOLocationID integer default null,
     SR_Flag integer default 0
+
+- name: green_
+  size: large
+  columns: ['VendorID','lpep_pickup_datetime','Lpep_dropoff_datetime','Store_and_fwd_flag','RateCodeID','Pickup_longitude','Pickup_latitude','Dropoff_longitude','Dropoff_latitude','Passenger_count','Trip_distance','Fare_amount','Extra','MTA_tax','Tip_amount','Tolls_amount','Ehail_fee','improvement_surcharge','Total_amount','Payment_type','Trip_type']
+  schema: |
+    VendorID integer default null,
+    lpep_pickup_datetime timestamp without time zone not null,
+    lpep_dropoff_datetime timestamp without time zone not null,
+    store_and_fwd_flag varchar(1) default null,
+    RateCodeID integer default null,
+    pickup_longitude numeric default null,
+    pickup_latitude numeric default null,
+    dropoff_longitude numeric default null,
+    dropoff_latitude numeric default null,
+    passenger_count integer default null,
+    trip_distance numeric default null,
+    fare_amount numeric default null,
+    extra text default null,
+    mta_tax text default null,
+    tip_amount text default null,
+    tolls_amount text default null,
+    ehail_fee text default null,
+    improvement_surcharge text default null,
+    total_amount text default null,
+    payment_type text default null,
+    trip_type integer default null
+
+- name: yellow_
+  size: large
+  columns: ['vendor_id','tpep_pickup_datetime','tpep_dropoff_datetime','passenger_count','trip_distance','pickup_longitude','pickup_latitude','rate_code_id','store_and_fwd_flag', 'dropoff_longitude','dropoff_latitude', 'payment_type','fare_amount','extra','mta_tax','tip_amount','tolls_amount', 'improvement_surcharge','total_amount','pickup_location_id','dropoff_location_id','congestion_surcharge']
+  schema: |
+    vendor_id integer default null,
+    tpep_pickup_datetime timestamp without time zone not null,
+    tpep_dropoff_datetime timestamp without time zone not null,
+    passenger_count text,
+    trip_distance text,
+    pickup_longitude numeric,
+    pickup_latitude numeric,
+    rate_code_id text,
+    store_and_fwd_flag text,
+    dropoff_longitude numeric,
+    dropoff_latitude numeric,
+    payment_type text,
+    fare_amount text,
+    extra text,
+    mta_tax text,
+    tip_amount text,
+    tolls_amount text,
+    improvement_surcharge text,
+    total_amount text,
+    pickup_location_id text,
+    dropoff_location_id text,
+    congestion_surcharge text
