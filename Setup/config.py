@@ -2,12 +2,12 @@ import os
 from pathlib import Path
 
 os.environ['HOME'] = "C:/Users/jmagr"
-os.environ['PROJECT'] = "OneDrive/Documents/Github/NYC-Taxi-Analysis"
+os.environ['PROJECT'] = "Documents/NYC-Taxi-Analysis"
 
 #Set path
 downloads_path = Path(
         os.environ['HOME'],
-        'Downloads/NYC_Data'
+        'Downloads/NYC_Data_Test'
     )
 
 schema_path = Path(
