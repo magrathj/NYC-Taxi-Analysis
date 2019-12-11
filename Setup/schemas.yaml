@@ -1,39 +1,36 @@
-- name: green 
+- name: green
   size: large
-  columns: ['id', 'vendor_id','lpep_pickup_datetime','lpep_dropoff_datetime','store_and_fwd_flag','rate_code_id','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude','passenger_count','trip_distance','fare_amount','extra','mta_tax','tip_amount','tolls_amount','ehail_fee','improvement_surcharge','total_amount', 'payment_type','trip_type','pickup_location_id','dropoff_location_id','congestion_surcharge']
+  columns: ['id', 'vendor_id','lpep_pickup_datetime','lpep_dropoff_datetime','store_and_fwd_flag','RateCodeID','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude','passenger_count','trip_distance','fare_amount','extra','mta_tax','tip_amount','tolls_amount','ehail_fee','improvement_surcharge','total_amount', 'payment_type','trip_type']
   schema: |
     id serial primary key,
-    vendor_id text,
-    lpep_pickup_datetime text,
-    lpep_dropoff_datetime text,
-    store_and_fwd_flag text,
-    rate_code_id text,
-    pickup_longitude numeric,
-    pickup_latitude numeric,
-    dropoff_longitude numeric,
-    dropoff_latitude numeric,
-    passenger_count text,
-    trip_distance text,
-    fare_amount text,
-    extra text,
-    mta_tax text,
-    tip_amount text,
-    tolls_amount text,
-    ehail_fee text,
-    improvement_surcharge text,
-    total_amount text,
-    payment_type text,
-    trip_type text,
-    pickup_location_id text,
-    dropoff_location_id text,
-    congestion_surcharge text
+    vendor_id integer default null,
+    lpep_pickup_datetime datetime default null,
+    lpep_dropoff_datetime datetime default null,
+    store_and_fwd_flag varchar(1) default null,
+    RateCodeID integer default null,
+    pickup_longitude numeric default null,
+    pickup_latitude numeric default null,
+    dropoff_longitude numeric default null,
+    dropoff_latitude numeric default null,
+    passenger_count integer default null,
+    trip_distance numeric default null,
+    fare_amount numeric default null,
+    extra text default null,
+    mta_tax text default null,
+    tip_amount text default null,
+    tolls_amount text default null,
+    ehail_fee text default null,
+    improvement_surcharge text default null,
+    total_amount text default null,
+    payment_type text default null,
+    trip_type integer default null
 
-- name: yellow  
+- name: yellow
   size: large
   columns: ['id','vendor_id','tpep_pickup_datetime','tpep_dropoff_datetime','passenger_count','trip_distance','pickup_longitude','pickup_latitude','rate_code_id','store_and_fwd_flag', 'dropoff_longitude','dropoff_latitude', 'payment_type','fare_amount','extra','mta_tax','tip_amount','tolls_amount', 'improvement_surcharge','total_amount','pickup_location_id','dropoff_location_id','congestion_surcharge']
   schema: |
     id serial primary key,
-    vendor_id text,
+    vendor_id integer default null,
     tpep_pickup_datetime text,
     tpep_dropoff_datetime text,
     passenger_count text,
@@ -56,63 +53,23 @@
     dropoff_location_id text,
     congestion_surcharge text
 
-- name: fhv 
+- name: fhv_ 
   size: large
-  columns: ['dispatching_base_num', 'pickup_datetime', 'dropoff_datetime', 'pickup_location_id', 'dropoff_location_id', 'shared_ride', 'hvfhs_license_num']
+  columns: ['Dispatching_base_num','Pickup_date','locationID']
   schema: |
-    dispatching_base_num text,
-    pickup_datetime text,
-    dropoff_datetime text,
-    pickup_location_id text,
-    dropoff_location_id text,
-    shared_ride text,
-    hvfhs_license_num text
+    Dispatching_base_num varchar(6) default null,
+    Pickup_date datetime default null,
+    locationID integer default null
 
-- name: trips 
+    
+- name: fhvhv 
   size: large
-  columns: ['id','vendor_id','tpep_pickup_datetime','tpep_dropoff_datetime','passenger_count','trip_distance','pickup_longitude','pickup_latitude','rate_code_id','store_and_fwd_flag', 'dropoff_longitude','dropoff_latitude', 'payment_type','fare_amount','extra','mta_tax','tip_amount','tolls_amount', 'improvement_surcharge','total_amount','pickup_location_id','dropoff_location_id','congestion_surcharge']
+  columns: ['Hvfhs_license_num','Dispatching_base_num','Pickup_datetime', 'DropOff_datetime', 'PULocationID', 'DOLocationID', 'SR_Flag']
   schema: |
-    id serial primary key,
-    cab_type_id integer,
-    vendor_id text,
-    pickup_datetime timestamp without time zone,
-    dropoff_datetime timestamp without time zone,
-    store_and_fwd_flag text,
-    rate_code_id integer,
-    pickup_longitude numeric,
-    pickup_latitude numeric,
-    dropoff_longitude numeric,
-    dropoff_latitude numeric,
-    passenger_count integer,
-    trip_distance numeric,
-    fare_amount numeric,
-    extra numeric,
-    mta_tax numeric,
-    tip_amount numeric,
-    tolls_amount numeric,
-    ehail_fee numeric,
-    improvement_surcharge numeric,
-    congestion_surcharge numeric,
-    total_amount numeric,
-    payment_type text,
-    trip_type integer,
-    pickup_nyct2010_gid integer,
-    dropoff_nyct2010_gid integer,
-    pickup_location_id integer,
-    dropoff_location_id integer
-
-- name: cab_types 
-  size: small
-  columns: ['id', 'type']
-  schema: |
-    id serial primary key,
-    type text
-
-- name: base_fhv 
-  size: small
-  columns: ['base_number', 'base_name', 'dba', 'dba_category']
-  schema: |
-    base_number text primary key,
-    base_name text,
-    dba text,
-    dba_category text
+    Hvfhs_license_num varchar(6) default null,
+    Dispatching_base_num varchar(6) default null,
+    Pickup_datetime datetime default null,
+    DropOff_datetime datetime default null,
+    PULocationID integer default null,
+    DOLocationID integer default null,
+    SR_Flag boolean default 0
