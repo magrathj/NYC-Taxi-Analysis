@@ -2,9 +2,9 @@
   size: large
   columns: ['Dispatching_base_num','Pickup_date','locationID']
   schema: |
-    Dispatching_base_num varchar(6) default null,
-    Pickup_date timestamp without time zone not null,
-    locationID integer default null
+    Dispatching_base_num varchar(6),
+    Pickup_date timestamp without time zone,
+    locationID integer
 
 - name: fhvhv_ 
   size: large
