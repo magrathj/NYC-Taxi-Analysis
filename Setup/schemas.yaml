@@ -2,7 +2,7 @@
   size: small
   columns: ['Base_License_Number','Base_Name','DBA','Year','Month','Month_Name','Total_Dispatched_Trips','Total_Dispatched_Shared_Trips','Unique_Dispatched_Vehicles']
   schema: |
-    Base_License_Number VARCHAR(6) PRIMARY KEY,
+    Base_License_Number VARCHAR(6),
     Base_Name TEXT,
     DBA TEXT,
     Year INTEGER,
@@ -16,29 +16,70 @@
   size: small
   columns: ['LocationID','Borough','Zone','service_zone']
   schema: |
-    LocationID INTEGER PRIMARY KEY,
+    LocationID INTEGER,
     Borough TEXT,
     Zone TEXT,
     service_zone TEXT
 
-- name: fhv_ 
+- name: fhv_tripdata_2015 
   size: large
   columns: ['Dispatching_base_num','Pickup_date','locationID']
   schema: |
-    Dispatching_base_num VARCHAR(6) REFERENCES base_fhv(Base_License_Number),
+    Dispatching_base_num VARCHAR(6),
     Pickup_date timestamp without time zone,
-    locationID integer REFERENCES lookup(LocationID)
+    locationID integer
+
+- name: fhv_tripdata_2016 
+  size: large
+  columns: ['Dispatching_base_num','Pickup_date','locationID']
+  schema: |
+    Dispatching_base_num VARCHAR(6),
+    Pickup_date timestamp without time zone,
+    locationID integer
+
+- name: fhv_tripdata_2017
+  size: large
+  columns: ['Dispatching_base_num','Pickup_DateTime','DropOff_datetime','PUlocationID','DOlocationID']
+  schema: |
+    Dispatching_base_num VARCHAR(6),
+    Pickup_DateTime timestamp without time zone,
+    DropOff_datetime timestamp without time zone,
+    PUlocationID integer,
+    DOlocationID integer
+
+- name: fhv_tripdata_2018
+  size: large
+  columns: ['Pickup_DateTime','DropOff_datetime','PUlocationID','DOlocationID','SR_Flag','Dispatching_base_number','Dispatching_base_num']
+  schema: |
+    Pickup_DateTime timestamp without time zone,
+    DropOff_datetime timestamp without time zone,
+    PUlocationID TEXT,
+    DOlocationID TEXT,
+    SR_Flag TEXT,
+    Dispatching_base_number VARCHAR(6),
+    Dispatching_base_num TEXT
+
+- name: fhv_tripdata_2019 
+  size: large
+  columns: [dispatching_base_num,pickup_datetime,dropoff_datetime,PULocationID,DOLocationID,SR_Flag]
+  schema: |
+    Dispatching_base_num VARCHAR(6),
+    Pickup_DateTime timestamp without time zone,
+    DropOff_datetime timestamp without time zone,
+    PUlocationID integer,
+    DOlocationID integer,
+    SR_Flag TEXT
 
 - name: fhvhv_ 
   size: large
   columns: ['Hvfhs_license_num','Dispatching_base_num','Pickup_datetime', 'DropOff_datetime', 'PULocationID', 'DOLocationID', 'SR_Flag']
   schema: |
     Hvfhs_license_num varchar(6) default null,
-    Dispatching_base_num VARCHAR(6) REFERENCES base_fhv(Base_License_Number),
+    Dispatching_base_num VARCHAR(6),
     Pickup_datetime timestamp without time zone,
     DropOff_datetime timestamp without time zone,
-    PULocationID integer REFERENCES lookup(LocationID),
-    DOLocationID integer REFERENCES lookup(LocationID),
+    PULocationID integer,
+    DOLocationID integer,
     SR_Flag integer default 0
 
 - name: green_

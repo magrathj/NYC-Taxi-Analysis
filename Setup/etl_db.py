@@ -7,6 +7,13 @@ import configparser
 from config import *
 import sys
 import argparse
+import re
+
+def check_for_fhv_2017_type(name, files):
+    # if months over 7+ cut list
+    if name == "fhv_tripdata_2017":
+        files = [x for x in files if int(x.split('-')[-1].split('.')[0]) < 7]
+    return files
 
 def load_config(path) -> list:
     with open(path) as schema_file:
@@ -31,6 +38,7 @@ def load_tables(config: list, connection: pg.extensions.connection):
     for table in config:
         table_name = table.get('name')
         table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
+        table_files = check_for_fhv_2017_type(name=table_name, files=table_files)
         if not table_files:
             print("""No files to upload to {} table.""".format(table_name))
         else:
@@ -48,12 +56,15 @@ def load_shape_files(config: list, connection: pg.extensions.connection):
     # Iterate and load
     cur = connection.cursor()
     for table in config:
-        table_name = table.get('shapefile')
+        table_name = table.get('name')
         table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
+        table_files = check_for_fhv_2017_type(name=table_name, files=table_files)
+        print(table_files)
         if not table_files:
             print("""No files to upload to {} table.""".format(table_name))
         else:
-            print("""No files to upload to {} table.""".format(table_name))
+            print("""Files to upload to {} table.""".format(table_name))
+            
 
 def etl(host, port, dbname, user, password, sslmode):
     # DB connection
