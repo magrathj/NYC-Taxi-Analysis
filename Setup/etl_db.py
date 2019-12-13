@@ -8,10 +8,8 @@ from config import *
 import sys
 import argparse
 
-
-
-def load_config() -> list:
-    with open(schema_path) as schema_file:
+def load_config(path) -> list:
+    with open(path) as schema_file:
         config = yaml.load(schema_file)
     return config
 
@@ -46,6 +44,17 @@ def load_tables(config: list, connection: pg.extensions.connection):
                 connection.commit()
                 print("""Completed loading file {} into {} table.""".format(file, table_name))
 
+def load_shape_files(config: list, connection: pg.extensions.connection):
+    # Iterate and load
+    cur = connection.cursor()
+    for table in config:
+        table_name = table.get('shapefile')
+        table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
+        if not table_files:
+            print("""No files to upload to {} table.""".format(table_name))
+        else:
+            print("""No files to upload to {} table.""".format(table_name))
+
 def etl(host, port, dbname, user, password, sslmode):
     # DB connection
     print("""ETL started.""")
@@ -60,9 +69,10 @@ def etl(host, port, dbname, user, password, sslmode):
     )
     print("""Successfully created db connection.""")
     # Table creation and data insertion
-    config = load_config()
+    config = load_config(path=schema_path)
     create_tables(config=config, connection=connection)
     load_tables(config=config, connection=connection)
+    #load_shape_files(config=config, connection=connection)
     print("""ETL completed.""")
 
 

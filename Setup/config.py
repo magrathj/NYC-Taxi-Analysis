@@ -17,6 +17,13 @@ schema_path = Path(
         'schemas.yaml'
     )
 
+shapefiles_path = Path(
+        os.environ['HOME'],
+        os.environ['PROJECT'],
+        'Setup',
+        'shapefiles.yaml'
+    )
+
 urls_path = Path(
         os.environ['HOME'],
         os.environ['PROJECT'],
