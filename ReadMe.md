@@ -19,7 +19,7 @@ Statistics through June 30, 2019:
 `python Setup/download_data.py`
 
 3. Modify paths in the config.py script and run it to load the csv data into the DB. Then populate the database:
-`python etl_db.py --host="<server-name>" --port=5432 --user="<admin-username>" --dbname="<database-name>" --password="<admin-password>" --sslmode="allow"` 
+`python Setup/etl_db.py --host="<server-name>" --port=5432 --user="<admin-username>" --dbname="<database-name>" --password="<admin-password>" --sslmode="require"` 
 
 4. Analysis
 Additional Postgres and R scripts for analysis are in the analysis/ folder
@@ -42,7 +42,7 @@ Additional Postgres and R scripts for analysis are in the analysis/ folder
 `python Setup/download_data.py`
 
 6. Modify paths in the config.py script and run it to load the csv data into the DB. Then populate the database:
-`python etl_db.py`
+`python Setup/etl_db.py --host="localhost" --port=5432 --user="<admin-username>" --dbname="postgres" --password="<admin-password>" --sslmode="allow"`
 
 7. Analysis
 Additional Postgres and R scripts for analysis are in the analysis/ folder, or you can do your own!
