@@ -7,11 +7,16 @@ import configparser
 from config import *
 import sys
 import argparse
+import re
 
+def check_for_fhv_2017_type(name, files):
+    # if months over 7+ cut list
+    if name == "fhv_tripdata_2017":
+        files = [x for x in files if int(x.split('-')[-1].split('.')[0]) < 7]
+    return files
 
-
-def load_config() -> list:
-    with open(schema_path) as schema_file:
+def load_config(path) -> list:
+    with open(path) as schema_file:
         config = yaml.load(schema_file)
     return config
 
@@ -33,6 +38,7 @@ def load_tables(config: list, connection: pg.extensions.connection):
     for table in config:
         table_name = table.get('name')
         table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
+        table_files = check_for_fhv_2017_type(name=table_name, files=table_files)
         if not table_files:
             print("""No files to upload to {} table.""".format(table_name))
         else:
@@ -45,6 +51,20 @@ def load_tables(config: list, connection: pg.extensions.connection):
                     cur.copy_expert(f"COPY {table_name} FROM STDIN CSV NULL AS ''", f)
                 connection.commit()
                 print("""Completed loading file {} into {} table.""".format(file, table_name))
+
+def load_shape_files(config: list, connection: pg.extensions.connection):
+    # Iterate and load
+    cur = connection.cursor()
+    for table in config:
+        table_name = table.get('name')
+        table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
+        table_files = check_for_fhv_2017_type(name=table_name, files=table_files)
+        print(table_files)
+        if not table_files:
+            print("""No files to upload to {} table.""".format(table_name))
+        else:
+            print("""Files to upload to {} table.""".format(table_name))
+            
 
 def etl(host, port, dbname, user, password, sslmode):
     # DB connection
@@ -60,9 +80,10 @@ def etl(host, port, dbname, user, password, sslmode):
     )
     print("""Successfully created db connection.""")
     # Table creation and data insertion
-    config = load_config()
+    config = load_config(path=schema_path)
     create_tables(config=config, connection=connection)
     load_tables(config=config, connection=connection)
+    #load_shape_files(config=config, connection=connection)
     print("""ETL completed.""")
 
 
@@ -70,11 +91,12 @@ def main():
     # Create Argument Parser
     ap = argparse.ArgumentParser(description = "This script creates and loads the NYC Taxi dataset into a defined postgres db. For example, python etl_db.py --host=<server-name> --port=5432 --dbname=<database-name> --user=<admin-username> --password=<admin-password>")
     # Add the arguments to the parser
-    ap.add_argument("-h", "--host", required=True, help="Enter <server-name>")
+    ap.add_argument("-s", "--host", required=True, help="Enter <server-name>")
     ap.add_argument("-p", "--port", required=True, help="Enter <port-number>, default 5432")
     ap.add_argument("-d", "--dbname", required=True, help="Enter <database-name>, default postgres")
     ap.add_argument("-u", "--user", required=True, help="Enter <admin-username>")
     ap.add_argument("-a", "--password", required=True, help="Enter <admin-password>")
+    ap.add_argument("-m", "--sslmode", required=True, help="ssl required or not - put either require/allow")
     args = vars(ap.parse_args())
     # Set db variables
     host = args['host']
@@ -82,9 +104,10 @@ def main():
     dbname = args['dbname']
     user = args['user']
     password = args['password']
-    sslmode = "require"
+    sslmode = args['sslmode']
     etl(host=host, port=port, dbname=dbname, user=user, password=password, sslmode=sslmode)
 
 
 if __name__ == '__main__':
+    # for example - python etl_db.py --host="localhost" --port=5432 --user="postgres" --dbname="postgres" --password="password" --sslmode="allow"
     main()
