@@ -55,3 +55,4 @@ Additional Postgres and R scripts for analysis are in the analysis/ folder, or y
 * https://chih-ling-hsu.github.io/2018/05/14/NYC#location-data
 * https://docs.microsoft.com/en-us/azure/postgresql/quickstart-create-server-database-portal
 * https://docs.microsoft.com/en-us/azure/postgresql/connect-python
+* https://towardsdatascience.com/if-taxi-trips-were-fireflies-1-3-billion-nyc-taxi-trips-plotted-b34e89f96cfa

@@ -45,7 +45,10 @@
     improvement_surcharge numeric default null,
     total_amount numeric default null,
     payment_type text default null,
-    trip_type integer default null
+    trip_type integer default null,
+    junk1 text,
+    junk2 text
+
 
 - name: fhv_tripdata_2015 
   size: large
