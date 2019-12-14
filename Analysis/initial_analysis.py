@@ -14,5 +14,8 @@ for file in downloads:
     df = pd.read_csv(downloads_path.joinpath(f"{downloads[0]}"), nrows=10)
     if df.shape[1] != 20:
         print(""" file {} .""".format(file))        
-        print(""" count {} .""".format(df.head))
+        print(""" count {} .""".format(df.head()))
+
+for col in df.columns:
+    print(""" '{}',""".format(col)) 
 
