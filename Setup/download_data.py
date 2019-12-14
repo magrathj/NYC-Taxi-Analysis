@@ -120,8 +120,8 @@ def download_NYC_Census_Track_Shape_file():
 def extras_download():
     print("\n Starting Download of Base Files \n")
     base_files = ['https://data.cityofnewyork.us/api/views/2v9c-2k7f/rows.csv?accessType=DOWNLOAD','https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv']
-    download_file(base_files[0], downloads_path.joinpath(f"base_fhv.csv")) 
-    download_file(base_files[1], downloads_path.joinpath(f"lookup.csv")) 
+    urllib.request.urlretrieve(base_files[0], downloads_path.joinpath(f"base_fhv.csv")) 
+    urllib.request.urlretrieve(base_files[1], downloads_path.joinpath(f"lookup.csv")) 
     print("\n Completed Download of Base Files \n")
 
 
@@ -132,7 +132,7 @@ def main():
     # get the shape files for NYC
     download_taxi_zones_shape_file()
     # get the census shape file
-    download_NYC_Census_Track_Shape_file()
+    download_NYC_Census_Track_Shape_file()    
     # get meta data
     extras_download()
     print("***** Ending Download Script ******")
