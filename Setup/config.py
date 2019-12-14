@@ -7,7 +7,7 @@ os.environ['PROJECT'] = "Documents/NYC-Taxi-Analysis"
 #Set path
 downloads_path = Path(
         os.environ['HOME'],
-        'Downloads/NYC_Data_Test'
+        'Downloads/NYC_Data'
     )
 
 schema_path = Path(
