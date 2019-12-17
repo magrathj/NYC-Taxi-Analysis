@@ -1,0 +1,515 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2019.4">
+  <Nodes>
+    <Node ToolID="19">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="54" width="613" height="225" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>FHV Files</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="2">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
+            <Position x="79.00001" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Directory>C:\Users\jmagr\Downloads\NYC_Data</Directory>
+              <FileSpec>fhv*.*</FileSpec>
+              <IncludeSubDirs value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>dir C:\Users\jmagr\Downloads\NYC_Data\fhv*.*</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDirectory" />
+        </Node>
+        <Node ToolID="12">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="583" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\jmagr\AppData\Local\Temp\Engine_14716_8c04dc3dfae14eee8f448cf5b55fc7a7_\Engine_12292_3c1f97c28ed345fcb3763ae920e79a38_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="14">
+          <GuiSettings>
+            <Position x="187" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="ControlParams"><![CDATA[Control Parameter (2)=FullPath
+]]></Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name>get_file_contents (5)</Name>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output5">
+              <RecordInfo>
+                <Field name="hvfhs_license_num" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\fhvhv_tripdata_2019-02.csv" type="V_String" />
+                <Field name="dispatching_base_num" size="254" source="File: (Multiple Sources)" type="V_String" />
+                <Field name="pickup_datetime" size="254" source="File: (Multiple Sources)" type="V_String" />
+                <Field name="dropoff_datetime" size="254" source="File: (Multiple Sources)" type="V_String" />
+                <Field name="PULocationID" size="254" source="File: (Multiple Sources)" type="V_String" />
+                <Field name="DOLocationID" size="254" source="File: (Multiple Sources)" type="V_String" />
+                <Field name="SR_Flag" size="254" source="File: (Multiple Sources)" type="V_String" />
+                <Field name="Pickup_date" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\fhv_tripdata_2015-01.csv" type="V_String" />
+                <Field name="locationID" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\fhv_tripdata_2015-01.csv" type="V_String" />
+                <Field name="Dispatching_base_number" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\fhv_tripdata_2018-01.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings Macro=".\get_file_contents.yxmc" />
+        </Node>
+        <Node ToolID="15">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="283" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="IF IsNull([Dispatching_base_num])  OR IsEmpty([Dispatching_base_num]) THEN [Dispatching_base_number] ELSE [Dispatching_base_num] ENDIF" field="Dispatching_base_num" size="254" type="V_String" />
+                <FormulaField expression="IF IsNull([Pickup_date]) OR IsEmpty([Pickup_date]) THEN [Pickup_DateTime] ELSE [Pickup_date] ENDIF" field="Pickup_date" size="254" type="V_String" />
+                <FormulaField expression="IF IsNull([locationID]) OR IsEmpty([locationID]) THEN [PUlocationID] ELSE [locationID] ENDIF" field="locationID" size="254" type="V_String" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Dispatching_base_num = IF IsNull([Dispatching_base_num])  OR IsEmpty([Dispatchin...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="16">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="487" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Pickup_DateTime" selected="False" />
+                <SelectField field="DropOff_datetime" selected="True" type="DateTime" size="19" />
+                <SelectField field="PUlocationID" selected="False" />
+                <SelectField field="DOlocationID" selected="True" type="Int32" size="4" />
+                <SelectField field="SR_Flag" selected="True" type="Int32" size="4" />
+                <SelectField field="Pickup_date" selected="True" type="DateTime" size="19" />
+                <SelectField field="locationID" selected="True" type="Int32" size="4" />
+                <SelectField field="Dispatching_base_number" selected="False" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="17">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.MultiFieldFormula.MultiFieldFormula">
+            <Position x="391" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FieldType>Text</FieldType>
+              <Fields orderChanged="False">
+                <Field name="Dispatching_base_num" />
+                <Field name="Pickup_date" />
+                <Field name="locationID" />
+                <Field name="Pickup_DateTime" />
+                <Field name="DropOff_datetime" />
+                <Field name="PUlocationID" />
+                <Field name="DOlocationID" />
+                <Field name="SR_Flag" />
+                <Field name="Dispatching_base_number" />
+                <Field name="*Unknown" />
+              </Fields>
+              <CopyOutput value="False" />
+              <Expression>if IsEmpty([_CurrentField_]) then null() else [_CurrentField_] endif</Expression>
+              <ChangeFieldType value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>if IsEmpty([_CurrentField_]) then null() else [_CurrentField_...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMultiFieldFormula" />
+        </Node>
+        <Node ToolID="34">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="558" y="162" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\jmagr\Downloads\NYC_Data_Output\FHV.csv</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>FHV.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="26">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="306" width="141.7813" height="24" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Green Files</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="True" />
+          <Folded value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
+            <Position x="79" y="355" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Directory>C:\Users\jmagr\Downloads\NYC_Data</Directory>
+              <FileSpec>green_tripdata_2015*.*</FileSpec>
+              <IncludeSubDirs value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>dir C:\Users\jmagr\Downloads\NYC_Data\green_tripdata_2015*.*</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDirectory" />
+        </Node>
+        <Node ToolID="21">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="583" y="355" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\jmagr\AppData\Local\Temp\Engine_8944_c32aae3657f342e697ac9e7fe7199a89_\Engine_12292_34bb2b5772e949c3b7d23bc7ad330dc2_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="32">
+          <GuiSettings>
+            <Position x="223" y="355" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="ControlParams"><![CDATA[Control Parameter (2)=FullPath
+]]></Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name>get_file_contents_green (31)</Name>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output5">
+              <RecordInfo>
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings Macro="get_file_contents_green.yxmc" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="30">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="522" width="617" height="208" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Yellow Files</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="27">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
+            <Position x="79" y="571" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Directory>C:\Users\jmagr\Downloads\NYC_Data</Directory>
+              <FileSpec>yellow*.*</FileSpec>
+              <IncludeSubDirs value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>dir C:\Users\jmagr\Downloads\NYC_Data\yellow*.*</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDirectory" />
+        </Node>
+        <Node ToolID="28">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="583" y="571" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\jmagr\AppData\Local\Temp\Engine_14716_8c04dc3dfae14eee8f448cf5b55fc7a7_\Engine_12292_ac9fc882600e4081ad4009a9c8e6dd9b_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="29">
+          <GuiSettings>
+            <Position x="187" y="571" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="ControlParams"><![CDATA[Control Parameter (2)=FullPath
+]]></Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output5">
+              <RecordInfo>
+                <Field name="vendor_name" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Trip_Pickup_DateTime" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Trip_Dropoff_DateTime" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Passenger_Count" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Trip_Distance" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Start_Lon" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Start_Lat" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Rate_Code" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="store_and_forward" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="End_Lon" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="End_Lat" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Payment_Type" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Fare_Amt" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="surcharge" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="mta_tax" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Tip_Amt" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Tolls_Amt" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+                <Field name="Total_Amt" size="254" source="File: C:\Users\jmagr\Downloads\NYC_Data\yellow_tripdata_2009-01.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings Macro="C:\Users\jmagr\OneDrive\Documents\GitHub\NYC-Taxi-Analysis\ETL\get_file_contents.yxmc" />
+        </Node>
+        <Node ToolID="33">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="582" y="630" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\jmagr\Downloads\NYC_Data_Output\yellow.csv</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>yellow.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="14" Connection="Control" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output5" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="34" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="20" Connection="Output" />
+      <Destination ToolID="32" Connection="Control" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="32" Connection="Output5" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="27" Connection="Output" />
+      <Destination ToolID="29" Connection="Control" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output5" />
+      <Destination ToolID="28" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output5" />
+      <Destination ToolID="33" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>ETL</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

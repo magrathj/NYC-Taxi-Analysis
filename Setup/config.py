@@ -1,8 +1,8 @@
 import os
 from pathlib import Path
 
-os.environ['HOME'] = "C:/Users/jmagr"
-os.environ['PROJECT'] = "Documents/NYC-Taxi-Analysis"
+os.environ['HOME'] = "C:/Users/jmagr/"
+os.environ['PROJECT'] = "OneDrive/Documents/Github/NYC-Taxi-Analysis"
 
 #Set path
 downloads_path = Path(
