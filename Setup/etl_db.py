@@ -37,14 +37,14 @@ def load_tables(config: list, connection: pg.extensions.connection):
     cur = connection.cursor()
     for table in config:
         table_name = table.get('name')
-        table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
+        table_files = [filename for filename in os.listdir(data_path) if filename.startswith(table_name)]
         table_files = check_for_fhv_2017_type(name=table_name, files=table_files)
         if not table_files:
             print("""No files to upload to {} table.""".format(table_name))
         else:
             for file in table_files:
                 file_name = file.split('.')[0]
-                table_source = downloads_path.joinpath(f"{file_name}.csv")
+                table_source = data_path.joinpath(f"{file_name}.csv")
                 print("""Started to load {} data to db from {}.""".format(table_name, table_source))
                 with open(table_source, 'r', encoding='utf-8') as f:
                     next(f)
@@ -57,7 +57,7 @@ def load_shape_files(config: list, connection: pg.extensions.connection):
     cur = connection.cursor()
     for table in config:
         table_name = table.get('name')
-        table_files = [filename for filename in os.listdir(downloads_path) if filename.startswith(table_name)]
+        table_files = [filename for filename in os.listdir(data_path) if filename.startswith(table_name)]
         table_files = check_for_fhv_2017_type(name=table_name, files=table_files)
         print(table_files)
         if not table_files:

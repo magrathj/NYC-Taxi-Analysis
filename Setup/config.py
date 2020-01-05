@@ -33,8 +33,7 @@ urls_path = Path(
 
 data_path =  Path(
         os.environ['HOME'],
-        os.environ['PROJECT'],
-        'data'
+        'Downloads/NYC_Data_Output'
     )
 
 

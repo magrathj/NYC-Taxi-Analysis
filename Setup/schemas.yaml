@@ -1,4 +1,58 @@
-- name: green_
+- name: green
+  size: large
+  columns: ['VendorID','lpep_pickup_datetime','Lpep_dropoff_datetime','Store_and_fwd_flag','RateCodeID','Pickup_longitude','Pickup_latitude','Dropoff_longitude','Dropoff_latitude','Passenger_count','Trip_distance','Fare_amount','Extra','MTA_tax','Tip_amount','Tolls_amount','Ehail_fee','improvement_surcharge','Total_amount','Payment_type','Trip_type','junk1', 'junk2']
+  schema: |
+    VendorID integer default null,
+    lpep_pickup_datetime timestamp without time zone,
+    lpep_dropoff_datetime timestamp without time zone,
+    store_and_fwd_flag varchar(1) default null,
+    RateCodeID integer default null,
+    pickup_longitude numeric default null,
+    pickup_latitude numeric default null,
+    dropoff_longitude numeric default null,
+    dropoff_latitude numeric default null,
+    passenger_count integer default null,
+    trip_distance numeric default null,
+    fare_amount numeric default null,
+    extra numeric default null,
+    mta_tax numeric default null,
+    tip_amount numeric default null,
+    tolls_amount numeric default null,
+    ehail_fee numeric default null,
+    improvement_surcharge numeric default null,
+    total_amount numeric default null,
+    payment_type text default null,
+    trip_type integer default null,
+    junk1 text
+
+- name: FHV
+  size: large
+  columns: ['VendorID','lpep_pickup_datetime','Lpep_dropoff_datetime','Store_and_fwd_flag','RateCodeID','Pickup_longitude','Pickup_latitude','Dropoff_longitude','Dropoff_latitude','Passenger_count','Trip_distance','Fare_amount','Extra','MTA_tax','Tip_amount','Tolls_amount','Ehail_fee','improvement_surcharge','Total_amount','Payment_type','Trip_type','junk1', 'junk2']
+  schema: |
+    VendorID integer default null,
+    lpep_pickup_datetime timestamp without time zone,
+    lpep_dropoff_datetime timestamp without time zone,
+    store_and_fwd_flag varchar(1) default null,
+    RateCodeID integer default null,
+    pickup_longitude numeric default null,
+    pickup_latitude numeric default null,
+    dropoff_longitude numeric default null,
+    dropoff_latitude numeric default null,
+    passenger_count integer default null,
+    trip_distance numeric default null,
+    fare_amount numeric default null,
+    extra numeric default null,
+    mta_tax numeric default null,
+    tip_amount numeric default null,
+    tolls_amount numeric default null,
+    ehail_fee numeric default null,
+    improvement_surcharge numeric default null,
+    total_amount numeric default null,
+    payment_type text default null,
+    trip_type integer default null,
+    junk1 text
+
+- name: yellow
   size: large
   columns: ['VendorID','lpep_pickup_datetime','Lpep_dropoff_datetime','Store_and_fwd_flag','RateCodeID','Pickup_longitude','Pickup_latitude','Dropoff_longitude','Dropoff_latitude','Passenger_count','Trip_distance','Fare_amount','Extra','MTA_tax','Tip_amount','Tolls_amount','Ehail_fee','improvement_surcharge','Total_amount','Payment_type','Trip_type','junk1', 'junk2']
   schema: |
