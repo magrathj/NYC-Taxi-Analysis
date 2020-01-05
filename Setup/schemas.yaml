@@ -27,54 +27,35 @@
 
 - name: FHV
   size: large
-  columns: ['VendorID','lpep_pickup_datetime','Lpep_dropoff_datetime','Store_and_fwd_flag','RateCodeID','Pickup_longitude','Pickup_latitude','Dropoff_longitude','Dropoff_latitude','Passenger_count','Trip_distance','Fare_amount','Extra','MTA_tax','Tip_amount','Tolls_amount','Ehail_fee','improvement_surcharge','Total_amount','Payment_type','Trip_type','junk1', 'junk2']
+  columns: ['hvfhs_license_num', 'dispatching_base_num', 'dropoff_datetime', 'DOLocationID', 'SR_Flag', 'Pickup_date', 'locationID']
   schema: |
-    VendorID integer default null,
-    lpep_pickup_datetime timestamp without time zone,
-    lpep_dropoff_datetime timestamp without time zone,
-    store_and_fwd_flag varchar(1) default null,
-    RateCodeID integer default null,
-    pickup_longitude numeric default null,
-    pickup_latitude numeric default null,
-    dropoff_longitude numeric default null,
-    dropoff_latitude numeric default null,
-    passenger_count integer default null,
-    trip_distance numeric default null,
-    fare_amount numeric default null,
-    extra numeric default null,
-    mta_tax numeric default null,
-    tip_amount numeric default null,
-    tolls_amount numeric default null,
-    ehail_fee numeric default null,
-    improvement_surcharge numeric default null,
-    total_amount numeric default null,
-    payment_type text default null,
-    trip_type integer default null,
-    junk1 text
+    hvfhs_license_num text default null,
+    dispatching_base_num text default null, 
+    dropoff_datetime timestamp without time zone, 
+    DOLocationID integer default null, 
+    SR_Flag integer default null, 
+    Pickup_date timestamp without time zone,
+    locationID integer default null
 
 - name: yellow
   size: large
-  columns: ['VendorID','lpep_pickup_datetime','Lpep_dropoff_datetime','Store_and_fwd_flag','RateCodeID','Pickup_longitude','Pickup_latitude','Dropoff_longitude','Dropoff_latitude','Passenger_count','Trip_distance','Fare_amount','Extra','MTA_tax','Tip_amount','Tolls_amount','Ehail_fee','improvement_surcharge','Total_amount','Payment_type','Trip_type','junk1', 'junk2']
+  columns: ['vendor_name','Trip_Pickup_DateTime','Trip_Dropoff_DateTime', 'Passenger_Count', 'Trip_Distance', 'Start_Lon','Start_Lat','Rate_Code','store_and_forward','End_Lon','End_Lat','Payment_Type','Fare_Amt','surcharge','mta_tax','Tip_Amt','Tolls_Amt','Total_Amt']
   schema: |
-    VendorID integer default null,
-    lpep_pickup_datetime timestamp without time zone,
-    lpep_dropoff_datetime timestamp without time zone,
-    store_and_fwd_flag varchar(1) default null,
-    RateCodeID integer default null,
-    pickup_longitude numeric default null,
-    pickup_latitude numeric default null,
-    dropoff_longitude numeric default null,
-    dropoff_latitude numeric default null,
-    passenger_count integer default null,
-    trip_distance numeric default null,
-    fare_amount numeric default null,
-    extra numeric default null,
+    vendor_name text default null,
+    Trip_Pickup_DateTime timestamp without time zone,
+    Trip_Dropoff_DateTime timestamp without time zone,
+    Passenger_Count integer default null, 
+    Trip_Distance numeric default null,
+    Start_Lon numeric default null,
+    Start_Lat numeric default null,
+    Rate_Code text default null,
+    store_and_forward text default null,
+    End_Lon numeric default null,
+    End_Lat numeric default null,
+    Payment_Type text default null,
+    Fare_Amt numeric default null,
+    surcharge numeric default null,
     mta_tax numeric default null,
-    tip_amount numeric default null,
-    tolls_amount numeric default null,
-    ehail_fee numeric default null,
-    improvement_surcharge numeric default null,
-    total_amount numeric default null,
-    payment_type text default null,
-    trip_type integer default null,
-    junk1 text
+    Tip_Amt numeric default null,
+    Tolls_Amt numeric default null,
+    Total_Amt numeric default null,

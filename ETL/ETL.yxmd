@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="19">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="113" y="53" width="613" height="225" />
+        <Position x="79" y="54" width="613" height="225" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -21,7 +21,7 @@
       <ChildNodes>
         <Node ToolID="2">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-            <Position x="138" y="102" />
+            <Position x="104" y="103" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -39,7 +39,7 @@
         </Node>
         <Node ToolID="12">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="642" y="102" />
+            <Position x="608" y="103" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -67,7 +67,7 @@
         </Node>
         <Node ToolID="15">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="342" y="102" />
+            <Position x="308" y="103" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -87,7 +87,7 @@
         </Node>
         <Node ToolID="16">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="546" y="102" />
+            <Position x="512" y="103" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -115,7 +115,7 @@
         </Node>
         <Node ToolID="17">
           <GuiSettings Plugin="AlteryxBasePluginsGui.MultiFieldFormula.MultiFieldFormula">
-            <Position x="450" y="102" />
+            <Position x="416" y="103" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -146,7 +146,7 @@
         </Node>
         <Node ToolID="34">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-            <Position x="618" y="162" />
+            <Position x="584" y="163" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -172,7 +172,7 @@
         </Node>
         <Node ToolID="36">
           <GuiSettings>
-            <Position x="246" y="102" />
+            <Position x="212" y="103" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -205,7 +205,7 @@
     </Node>
     <Node ToolID="26">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="88" y="304" width="974" height="1112" />
+        <Position x="54" y="305" width="997" height="1112" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -223,7 +223,7 @@
       <ChildNodes>
         <Node ToolID="21">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="978" y="402" />
+            <Position x="944" y="403" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -251,7 +251,7 @@
         </Node>
         <Node ToolID="51">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-            <Position x="786" y="402" />
+            <Position x="752" y="403" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -270,7 +270,7 @@
         </Node>
         <Node ToolID="58">
           <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-            <Position x="137" y="353" width="373" height="294" />
+            <Position x="103" y="354" width="372.9999" height="294" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -288,7 +288,7 @@
           <ChildNodes>
             <Node ToolID="20">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-                <Position x="162" y="402.0001" />
+                <Position x="128" y="403.0001" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -306,7 +306,7 @@
             </Node>
             <Node ToolID="43">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-                <Position x="162" y="486" />
+                <Position x="128" y="487" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -324,7 +324,7 @@
             </Node>
             <Node ToolID="44">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-                <Position x="246" y="402" />
+                <Position x="212" y="403" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -343,7 +343,7 @@
             </Node>
             <Node ToolID="71">
               <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-                <Position x="425.9999" y="402" />
+                <Position x="391.9999" y="403" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -382,7 +382,7 @@
             </Node>
             <Node ToolID="80">
               <GuiSettings>
-                <Position x="330" y="402" />
+                <Position x="296" y="403" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -435,7 +435,7 @@
         </Node>
         <Node ToolID="59">
           <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-            <Position x="125" y="665" width="649" height="306" />
+            <Position x="91" y="666" width="649" height="306" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -453,7 +453,7 @@
           <ChildNodes>
             <Node ToolID="45">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-                <Position x="150" y="726" />
+                <Position x="116" y="727" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -471,7 +471,7 @@
             </Node>
             <Node ToolID="46">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-                <Position x="150" y="810" />
+                <Position x="116" y="811" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -489,7 +489,7 @@
             </Node>
             <Node ToolID="47">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-                <Position x="234" y="726" />
+                <Position x="200" y="727" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -508,7 +508,7 @@
             </Node>
             <Node ToolID="54">
               <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
-                <Position x="318" y="726" />
+                <Position x="284" y="727" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -528,7 +528,7 @@
             </Node>
             <Node ToolID="56">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-                <Position x="390" y="726" />
+                <Position x="356" y="727" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -559,7 +559,7 @@
             </Node>
             <Node ToolID="72">
               <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-                <Position x="594" y="714" />
+                <Position x="560" y="715" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -600,7 +600,7 @@
             </Node>
             <Node ToolID="73">
               <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-                <Position x="594" y="798" />
+                <Position x="560" y="799" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -639,7 +639,7 @@
             </Node>
             <Node ToolID="74">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-                <Position x="690" y="714" />
+                <Position x="656" y="715" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -658,7 +658,7 @@
             </Node>
             <Node ToolID="77">
               <GuiSettings>
-                <Position x="498" y="714" />
+                <Position x="464" y="715" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -709,7 +709,7 @@
             </Node>
             <Node ToolID="78">
               <GuiSettings>
-                <Position x="498" y="798" />
+                <Position x="464" y="799" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -762,7 +762,7 @@
         </Node>
         <Node ToolID="60">
           <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-            <Position x="113" y="1013" width="421.0001" height="378" />
+            <Position x="79" y="1014" width="421.0001" height="378" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -780,7 +780,7 @@
           <ChildNodes>
             <Node ToolID="48">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-                <Position x="138.0001" y="1062" />
+                <Position x="104.0001" y="1063" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -798,7 +798,7 @@
             </Node>
             <Node ToolID="49">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-                <Position x="150.0001" y="1146" />
+                <Position x="116.0001" y="1147" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -816,7 +816,7 @@
             </Node>
             <Node ToolID="50">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-                <Position x="234.0001" y="1062" />
+                <Position x="200.0001" y="1063" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -835,7 +835,7 @@
             </Node>
             <Node ToolID="52">
               <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-                <Position x="150.0001" y="1230" />
+                <Position x="116.0001" y="1231" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -853,7 +853,7 @@
             </Node>
             <Node ToolID="75">
               <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-                <Position x="450.0001" y="1062" />
+                <Position x="416.0001" y="1063" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -892,7 +892,7 @@
             </Node>
             <Node ToolID="79">
               <GuiSettings>
-                <Position x="354.0001" y="1062" />
+                <Position x="320.0001" y="1063" />
               </GuiSettings>
               <Properties>
                 <Configuration>
@@ -945,7 +945,7 @@
         </Node>
         <Node ToolID="67">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AutoField.AutoField">
-            <Position x="882" y="402" />
+            <Position x="848" y="403" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1044,9 +1044,6 @@
               <DefaultAnnotationText>green.csv</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
         </Node>
@@ -1054,7 +1051,7 @@
     </Node>
     <Node ToolID="30">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="149" y="1457" width="618" height="209" />
+        <Position x="115" y="1458" width="618" height="209" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1072,7 +1069,7 @@
       <ChildNodes>
         <Node ToolID="27">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-            <Position x="174" y="1506" />
+            <Position x="140" y="1507" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1090,7 +1087,7 @@
         </Node>
         <Node ToolID="28">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="678" y="1506" />
+            <Position x="644" y="1507" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1118,7 +1115,7 @@
         </Node>
         <Node ToolID="33">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-            <Position x="678" y="1566" />
+            <Position x="644" y="1567" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1144,7 +1141,7 @@
         </Node>
         <Node ToolID="35">
           <GuiSettings>
-            <Position x="282" y="1506" />
+            <Position x="248" y="1507" />
           </GuiSettings>
           <Properties>
             <Configuration>
