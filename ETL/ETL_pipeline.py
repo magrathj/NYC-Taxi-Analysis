@@ -58,14 +58,24 @@ def add_additional_columns(df, col):
 def cleanse_files(file_prefix, rename_col, col):
     files = get_downloaded_files(file_prefix=file_prefix)
     for file in files:
+        print(f"\n opening file: {file}")
         filename = downloads_path.joinpath(file)
         output_file = data_path.joinpath(file)
         df = get_spark_df(filename=filename.as_posix())
-        #df = add_additional_columns(df=df, col=col)
+
+        print(f"\n add additional columns")
+        df = add_additional_columns(df=df, col=col)
+
+        print(f"\n rename columns")
         df = rename_columns(df=df, columns=rename_col)
+
+        print(f"\n convert blanks to null values")
         df = convert_blank_as_null(df=df)
-        print(df.printSchema())
-        #df.toPandas().to_csv(output_file.as_posix())
+
+        print(f"\n output to cleansed data to csv")
+        df.toPandas().to_csv(output_file.as_posix())
+
+        print(f"------------------------")
 
 
 def load_config(path) -> list:
@@ -80,8 +90,15 @@ def etl():
         file_pre_fix = file.get('name')
         columns_rename = file.get('rename')
         additional_columns = file.get('columns')
-        cleanse_files(file_prefix=file_pre_fix, rename_col=columns_rename, col=additional_columns)
 
+        print(f"-----------------")
+        print(f" get all {file_pre_fix} files")
+
+        cleanse_files(file_prefix=file_pre_fix, rename_col=columns_rename, col=additional_columns)
+        print(f" completed ETL for all {file_pre_fix} files")    
+        
+    print(f"Completed all config files")
+        
 
 
 

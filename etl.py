@@ -11,5 +11,6 @@ def main():
 
 
 if __name__ == '__main__':
+    # for example - python etl.py
     main()
 
