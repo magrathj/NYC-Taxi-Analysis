@@ -138,4 +138,5 @@ def main():
     print("***** Ending Download Script ******")
 
 if __name__ == '__main__':
+    # for example - python Setup/download.py 
     main()

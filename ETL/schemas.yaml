@@ -1,0 +1,118 @@
+- name: fhv
+  columns: 
+     Dispatching_base_number: 
+     Dispatching_base_num: 
+     Pickup_DateTime: 
+     PUlocationID: 
+     hvfhs_license_num: 
+     dropoff_datetime: 
+     DOLocationID: 
+     SR_Flag: 
+     Pickup_date: 
+     locationID: 
+  rename: 
+     Dispatching_base_number: dispatching_base
+     Dispatching_base_num: dispatching_base
+     Pickup_DateTime: Pickup_date
+     PUlocationID: locationID
+     hvfhs_license_num: hvfhs_license_num
+     dropoff_datetime: dropoff_datetime
+     DOLocationID: DOLocationID
+     SR_Flag: SR_Flag
+     Pickup_date: Pickup_date
+     locationID: locationID
+
+- name: green
+  columns: 
+     VendorID: 
+     lpep_pickup_datetime: 
+     Lpep_dropoff_datetime: 
+     Store_and_fwd_flag: 
+     RateCodeID: 
+     Pickup_longitude: 
+     Pickup_latitude: 
+     Dropoff_longitude: 
+     Dropoff_latitude: 
+     Passenger_count: 
+     Trip_distance: 
+     Fare_amount: 
+     Extra: 
+     MTA_tax: 
+     Tip_amount: 
+     Tolls_amount: 
+     Ehail_fee: 
+     Total_amount: 
+     Pa: 
+     improvement_sur: 
+     PULocationID: 
+     DOLocationID: 
+     improvement_surcharge: 
+     payment_type: 
+     trip_type: 
+  rename: 
+     VendorID: VendorID
+     lpep_pickup_datetime: lpep_pickup_datetime
+     Lpep_dropoff_datetime: Lpep_dropoff_datetime
+     Store_and_fwd_flag: Store_and_fwd_flag
+     RateCodeID: RateCodeID
+     Pickup_longitude: Pickup_longitude
+     Pickup_latitude: Pickup_latitude
+     Dropoff_longitude: Dropoff_longitude
+     Dropoff_latitude: Dropoff_latitude
+     Passenger_count: Passenger_count
+     Trip_distance: Trip_distance
+     Fare_amount: Fare_amount
+     Extra: Extra
+     MTA_tax: MTA_tax
+     Tip_amount: Tip_amount
+     Tolls_amount: Tolls_amount
+     Ehail_fee: Ehail_fee
+     Total_amount: Total_amount
+     Pa: Pa
+     improvement_sur: improvement_sur
+     PULocationID: PULocationID
+     DOLocationID: DOLocationID
+     improvement_surcharge: improvement_surcharge
+     payment_type: payment_type
+     trip_type: trip_type
+
+- name: yellow
+  columns: 
+     vendor_name: object
+     Trip_Pickup_DateTime: object
+     Trip_Dropoff_DateTime: object
+     Passenger_Count: float64
+     Trip_Distance: float64
+     Start_Lon: float64
+     Start_Lat: float64
+     Rate_Code: float64
+     store_and_forward: float64
+     End_Lon: float64
+     End_Lat: float64
+     Payment_Type: object
+     Fare_Amt: float64
+     surcharge: float64
+     mta_tax: float64
+     Tip_Amt: float64
+     Tolls_Amt: float64
+     Total_Amt: float64
+  rename: 
+     vendor_name:
+     Trip_Pickup_DateTime: 
+     Trip_Dropoff_DateTime:
+     Passenger_Count:
+     Trip_Distance:
+     Start_Lon:
+     Start_Lat:
+     Rate_Code:
+     store_and_forward:
+     End_Lon:
+     End_Lat:
+     Payment_Type:
+     Fare_Amt:
+     surcharge:
+     mta_tax:
+     Tip_Amt:
+     Tolls_Amt:
+     Total_Amt:
+

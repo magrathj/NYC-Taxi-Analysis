@@ -17,6 +17,13 @@ schema_path = Path(
         'schemas.yaml'
     )
 
+etl_schema_path = Path(
+        os.environ['HOME'],
+        os.environ['PROJECT'],
+        'ETL',
+        'schemas.yaml'
+    )
+
 shapefiles_path = Path(
         os.environ['HOME'],
         os.environ['PROJECT'],
@@ -33,7 +40,12 @@ urls_path = Path(
 
 data_path =  Path(
         os.environ['HOME'],
-        'Downloads/NYC_Data_Output'
+        'Downloads/NYC_Output_Second'
     )
 
+
+data_path2 =  Path(
+        os.environ['HOME'],
+        'Downloads/NYC_Data_Output'
+    )
 

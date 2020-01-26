@@ -109,5 +109,5 @@ def main():
 
 
 if __name__ == '__main__':
-    # for example - python etl_db.py --host="localhost" --port=5432 --user="postgres" --dbname="postgres" --password="password" --sslmode="allow"
+    # for example - python Setup/etl_db.py --host="localhost" --port=5432 --user="postgres" --dbname="postgres" --password="password" --sslmode="allow"
     main()
