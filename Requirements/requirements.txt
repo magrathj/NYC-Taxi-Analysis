@@ -54,7 +54,7 @@ python-dateutil==2.8.0
 pytz==2019.3
 pywin32==227
 pywinpty==0.5.5
-PyYAML==5.1
+PyYAML==5.4
 pyzmq==18.1.1
 qtconsole==4.6.0
 requests==2.22.0
